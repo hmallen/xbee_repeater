@@ -29,7 +29,7 @@ if __name__ == '__main__':
             if ser.in_waiting > 0:
                 incoming_char = ser.read()
                 logger.debug('incoming_char: ' + str(incoming_char))
-                if incoming_char == 'H' or incoming_char == 'M':
+                if incoming_char == b'H' or incoming_char == b'M':
                     bytes_written = ser.write(incoming_char)
                     logger.debug('bytes_written: ' + str(bytes_written))
 
