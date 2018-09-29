@@ -17,6 +17,13 @@ if __name__ == '__main__':
         timeout=1
     )
 
+    if ser.in_waiting > 0:
+        logger.debug('Flushing serial buffer.')
+        while ser.in_waiting > 0:
+            flush_char = ser.read()
+            logger.debug('flush_char: ' + str(flush_char))
+
+    logger.info('Repeater ready for incoming messages.')
     while True:
         try:
             if ser.in_waiting > 0:
